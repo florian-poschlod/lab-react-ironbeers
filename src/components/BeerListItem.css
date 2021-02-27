@@ -1,0 +1,9 @@
+.img-list {
+  height: 116px;
+  width: auto;
+}
+
+.beer-li {
+  padding: var(--pad-regular);
+  border-bottom: 1px solid var(--color-divider-line);
+}

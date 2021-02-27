@@ -1,0 +1,64 @@
+:root {
+
+  /* Colors */
+  --color-signal:rgb(15, 138, 179);
+  --color-bg:white;
+  --color-divider-line: lightgrey;
+
+  /* Padding */
+  --pad-regular: 16px;
+}
+
+
+/* Typography */
+
+h2 {
+  text-align: left;
+  margin-left: 16px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: grey;
+}
+
+.centered {
+  margin-left: 0px;
+  text-align: center;
+}
+
+.inverted {
+  color: var(--color-bg);
+}
+
+
+/* Layout */
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+
+/* Home Section */
+.section {
+  margin-bottom: 28px;
+}
+
+
+
+/* Reset default styles */
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}

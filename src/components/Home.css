@@ -1,0 +1,4 @@
+.hl-container {
+  padding-left: var(--pad-regular);
+  padding-right: var(--pad-regular);
+}
