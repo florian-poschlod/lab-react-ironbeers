@@ -2,14 +2,14 @@ import React from 'react';
 import Header from './Header';
 import axios from 'axios';
 
-export default class Beer extends React.Component {
+export default class RandomBeer extends React.Component {
 
   state = {
     beer: []
   }
-  
+
   componentDidMount() {
-    axios.get(`https://ih-beers-api2.herokuapp.com/beers/${this.props.match.params.beerId}`)
+    axios.get(`https://ih-beers-api2.herokuapp.com/beers/random`)
       .then(response => {
         this.setState({
           beer: response.data
@@ -21,9 +21,9 @@ export default class Beer extends React.Component {
   }
 
   render() {
-    
+
     console.log(this.state.beer)
-    
+
     return (
       <div>
         <Header />
@@ -39,9 +39,9 @@ export default class Beer extends React.Component {
             <p>{this.state.beer.contributed_by}</p>
           </div>
         </div>
-        
+
       </div>
     )
   }
-  
+
 }

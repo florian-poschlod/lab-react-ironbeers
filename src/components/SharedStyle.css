@@ -49,6 +49,10 @@ a:hover {
   flex-direction: row;
 }
 
+.col {
+  flex-direction: column;
+}
+
 
 /* Home Section */
 .section {
