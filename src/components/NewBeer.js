@@ -5,7 +5,6 @@ import axios from 'axios'
 export default class NewBeer extends React.Component {
 
   state = {
-    beer: {
       name: '',
       tagline: '',
       description: '',
@@ -14,10 +13,10 @@ export default class NewBeer extends React.Component {
       attenuation_level: '',
       contributed_by: ''
     }
-  }
 
   handleSubmit = event => {
     console.log('handle submit called')
+    event.preventDefault();
 
     const { name, tagline, description, first_brewed, brewers_tips, attenuation_level, contributed_by } = this.state;
     const newBeer = { name, tagline, description, first_brewed, brewers_tips, attenuation_level, contributed_by };
@@ -26,9 +25,20 @@ export default class NewBeer extends React.Component {
       beer: newBeer
     })
 
-    axios.post('https://ih-beers-api2.herokuapp.com/beers/new, ${this.state}')
+    console.log('state in submit', this.state)
+
+    axios.post(`https://ih-beers-api2.herokuapp.com/beers/new`, newBeer)
       .then(response => {
-        console.log(response)
+        console.log(response);
+        this.setState({
+          name: '',
+          tagline: '',
+          description: '',
+          first_brewed: '',
+          brewers_tips: '',
+          attenuation_level: '',
+          contributed_by: ''
+        })
       })
       .catch(err => {
         console.log(err);
@@ -37,9 +47,10 @@ export default class NewBeer extends React.Component {
   
 
   handleChange = event => {
-    const name = event.target.name;
+    const key = event.target.name;
+    const value = event.target.value;
     this.setState({
-      beer: {[name]: event.target.value}
+      [key]: value
     })
   }
 
@@ -58,7 +69,7 @@ export default class NewBeer extends React.Component {
             type="text"
             name="name"
             id="name"
-            value={this.state.beer.name}
+            value={this.state.name}
             onChange={this.handleChange}
           />
 
@@ -67,7 +78,7 @@ export default class NewBeer extends React.Component {
             type="text"
             name="tagline"
             id="tagline"
-            value={this.state.beer.tagline}
+            value={this.state.tagline}
             onChange={this.handleChange}
           />
 
@@ -76,7 +87,16 @@ export default class NewBeer extends React.Component {
             type="text"
             name="description"
             id="description"
-            value={this.state.beer.description}
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
+
+          <label htmlFor="brewer_tips">Brewer tips</label>
+          <input
+            type="text"
+            name="brewer_tips"
+            id="brewer_tips"
+            value={this.state.brewer_tips}
             onChange={this.handleChange}
           />
 
@@ -85,7 +105,7 @@ export default class NewBeer extends React.Component {
             type="text"
             name="first_brewed"
             id="first_brewed"
-            value={this.state.beer.first_brewed}
+            value={this.state.first_brewed}
             onChange={this.handleChange}
           />
 
@@ -94,7 +114,7 @@ export default class NewBeer extends React.Component {
             type="number"
             name="attenuation_level"
             id="attenuation_level"
-            value={this.state.beer.attenuation_level}
+            value={this.state.attenuation_level}
             onChange={this.handleChange}
           />
 
@@ -103,7 +123,7 @@ export default class NewBeer extends React.Component {
             type="text"
             name="contributed_by"
             id="contributed_by"
-            value={this.state.beer.contributed_by}
+            value={this.state.contributed_by}
             onChange={this.handleChange}
           />
 
